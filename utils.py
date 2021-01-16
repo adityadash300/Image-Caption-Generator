@@ -48,3 +48,16 @@ def preprocess_Img(load_path,save_path):
     return pixel_img
 
 def load_dataset():
+
+
+
+
+
+TPATH = 'C:/Users/Aditya Dash/Documents/GitHub/Image-Caption-Generator/Dataset/Captions/descriptions.txt'
+
+def preprocess_text():
+    with open(TPATH, 'r') as file:
+        captions = [line for line in file]
+        captions = [ele.strip().split('\t')[-1] for ele in captions]
+
+    
