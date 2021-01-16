@@ -1,18 +1,15 @@
+from os import listdir
+from PIL import Image,ImageOps
+import numpy as np
+import matplotlib.pyplot as plt
+
+PATH = "C:/Users/AMAR/Documents/GitHub/Image-Caption-Generator/Dataset/Images/"
+RPATH = "C:/Users/AMAR/Documents/GitHub/Image-Caption-Generator/Dataset/resized_Dataset/"
 TPATH = 'C:/Users/Aditya Dash/Documents/GitHub/Image-Caption-Generator/Dataset/Captions/descriptions.txt'
 
-def preprocess_text():
-    with open(PATH, 'r') as file:
-        captions  = [line for line in file]
-        captions  = [ele.strip().split('\t')[-1] for ele in captions]
-
-<<<<<<< HEAD
-        
-=======
 imagesList = listdir(PATH)
 
 NEW_DIM = (200,200)
-
-
 
 def loadImages(load_path):
 
@@ -49,18 +46,8 @@ def preprocess_Img(load_path,save_path):
 
     return pixel_img
 
-def load_dataset():
 
-
-
-
-
-TPATH = 'C:/Users/Aditya Dash/Documents/GitHub/Image-Caption-Generator/Dataset/Captions/descriptions.txt'
-
-def preprocess_text():
+def preprocess_text():                                                          #Preprocessing the captions (labels)
     with open(TPATH, 'r') as file:
         captions = [line for line in file]
         captions = [ele.strip().split('\t')[-1] for ele in captions]
-
-    
->>>>>>> 23a8ba91ea1b96994bdafb9abe4b7735a55db7e3
