@@ -50,4 +50,14 @@ def preprocess_Img(load_path,save_path):
 def preprocess_text():                                                          #Preprocessing the captions (labels)
     with open(TPATH, 'r') as file:
         captions = [line for line in file]
-        captions = [ele.strip().split('\t')[-1] for ele in captions]
+
+    captions = [ele.strip().split('\t')[-1].lower() for ele in captions]
+    grouped_cap = [captions[i : i + 5] for i in range(0, len(captions), 5)]
+
+    return captions, grouped_cap
+
+
+def glove_vec(glove_path):
+
+    with open(glove_path, 'r') as file:
+        
