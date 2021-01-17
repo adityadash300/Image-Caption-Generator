@@ -1,7 +1,6 @@
 from os import listdir
 from PIL import Image,ImageOps
 import numpy as np
-import matplotlib.pyplot as plt
 
 PATH = "C:/Users/AMAR/Documents/GitHub/Image-Caption-Generator/Dataset/Images/"
 RPATH = "C:/Users/AMAR/Documents/GitHub/Image-Caption-Generator/Dataset/resized_Dataset/"
@@ -57,7 +56,21 @@ def preprocess_text():                                                          
     return captions, grouped_cap
 
 
-def glove_vec(glove_path):
+def glove_vec(glove_file):
 
-    with open(glove_path, 'r') as file:
-        
+    with open(glove_file, 'r') as f:
+        words = set()
+        word2vec = {}
+        for line in f:
+            line  = line.strip().split()
+            word = line[0]
+            words.add(word)
+            word2vec[word] = np.asarray(line[1:], dtype = np.float64)
+
+    index_to_word = {}
+    word_to_index = {}
+    for index, word in enumerate(sorted(words)):
+        word_to_index[word] = index
+        index_to_word[index] = word
+
+    return word_to_index, index_to_word, word2vec
