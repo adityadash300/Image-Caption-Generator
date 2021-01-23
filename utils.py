@@ -56,7 +56,7 @@ def preprocess_text():                                                          
     return captions, grouped_cap
 
 
-def glove_vec(glove_file):
+def glove_vec(glove_file):                                                      #Creating embedding matrix
 
     with open(glove_file, 'r') as f:
         words = set()
@@ -67,10 +67,17 @@ def glove_vec(glove_file):
             words.add(word)
             word2vec[word] = np.asarray(line[1:], dtype = np.float64)
 
-    index_to_word = {}
+    index_to_word = {}                                                          #Tokenizing text corpus
     word_to_index = {}
     for index, word in enumerate(sorted(words)):
         word_to_index[word] = index
         index_to_word[index] = word
 
     return word_to_index, index_to_word, word2vec
+
+def load_dataset():                                                             #Dataset Creation
+
+    X = preprocess_Img(PATH, RPATH)
+    y, y_grp = preprocess_text()
+
+    return X, y, y_grp
